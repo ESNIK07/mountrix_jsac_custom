@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_customer_profitability_tree" model="ir.ui.view">
+            <field name="name">customer.profitability.report.tree</field>
+            <field name="model">customer.profitability.report</field>
+            <field name="arch" type="xml">
+                <tree action="action_open_customer_sales" type="object">
+                    <field name="currency_id" invisible="1"/>
+                    <field name="partner_id"/>
+                    <field name="total_sales" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="profit" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="margin"/>
+                    <!-- <button name="action_open_price_vs_cost_chart"
+                        type="object"
+                        icon="fa-bar-chart"
+                        string=""/>
+                         -->
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_customer_profitability_report" model="ir.actions.act_window">
+            <field name="name">Customer Profitability</field>
+            <field name="res_model">customer.profitability.report</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">No data available yet.</p>
+            </field>
+        </record>
+
+        <menuitem id="menu_customer_profitability_root" name="Customer Profitability" sequence="10"/>
+        <menuitem id="menu_customer_profitability_report"
+                name="Profitability Report"
+                parent="menu_customer_profitability_root"
+                action="action_customer_profitability_report"/>
+
+    </data>
+</odoo>

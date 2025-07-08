@@ -1,0 +1,83 @@
+# Translation of customer_profitability to Spanish
+msgid ""
+msgstr ""
+"Project-Id-Version: customer_profitability\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-07\n"
+"PO-Revision-Date: 2025-07-07\n"
+"Last-Translator: Juan Sebastián Agudelo\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: customer_profitability
+#: model:ir.ui.menu,name:customer_profitability.menu_customer_profitability_root
+msgid "Customer Profitability"
+msgstr "Rentabilidad por Cliente"
+
+#. module: customer_profitability
+#: model:ir.ui.menu,name:customer_profitability.menu_customer_profitability_report
+msgid "Profitability Report"
+msgstr "Reporte de Rentabilidad"
+
+#. module: customer_profitability
+#: model:ir.actions.act_window,name:customer_profitability.action_customer_profitability_report
+msgid "Customer Profitability"
+msgstr "Rentabilidad por Cliente"
+
+#. module: customer_profitability
+#: model:ir.ui.view,arch_db:customer_profitability.view_customer_profitability_tree
+msgid "Total Sales"
+msgstr "Ventas Totales"
+
+#. module: customer_profitability
+#: model:ir.ui.view,arch_db:customer_profitability.view_customer_profitability_tree
+msgid "Total Cost"
+msgstr "Costo Total"
+
+#. module: customer_profitability
+#: model:ir.ui.view,arch_db:customer_profitability.view_customer_profitability_tree
+msgid "Profit"
+msgstr "Ganancia"
+
+#. module: customer_profitability
+#: model:ir.ui.view,arch_db:customer_profitability.view_customer_profitability_tree
+msgid "Margin (%)"
+msgstr "Margen (%)"
+
+#. module: customer_profitability
+#: model:ir.model.fields,field_description:customer_profitability.field_customer_profitability_report__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: customer_profitability
+#: model:ir.model.fields,field_description:customer_profitability.field_customer_profitability_report__total_sales
+msgid "Total Sales"
+msgstr "Ventas Totales"
+
+#. module: customer_profitability
+#: model:ir.model.fields,field_description:customer_profitability.field_customer_profitability_report__total_cost
+msgid "Total Cost"
+msgstr "Costo Total"
+
+#. module: customer_profitability
+#: model:ir.model.fields,field_description:customer_profitability.field_customer_profitability_report__profit
+msgid "Profit"
+msgstr "Ganancia"
+
+#. module: customer_profitability
+#: model:ir.model.fields,field_description:customer_profitability.field_customer_profitability_report__margin
+msgid "Margin (%)"
+msgstr "Margen (%)"
+
+#. module: customer_profitability
+#: model:ir.model.fields,field_description:customer_profitability.field_customer_profitability_report__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: customer_profitability
+#: model:ir.model,name:customer_profitability.model_customer_profitability_report
+msgid "Customer Profitability Report"
+msgstr "Reporte de Rentabilidad por Cliente"
