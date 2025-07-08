@@ -22,10 +22,35 @@
             </field>
         </record>
 
+        <record id="view_customer_profitability_graph_bar" model="ir.ui.view">
+            <field name="name">customer.profitability.report.graph.bar</field>
+            <field name="model">customer.profitability.report</field>
+            <field name="arch" type="xml">
+                <graph string="Rentabilidad por Cliente (Barras)" type="bar" sample="1">
+                    <field name="partner_id" type="row"/>
+                    <field name="total_cost" type="measure"/>
+                    <field name="profit" type="measure"/>
+                    <field name="margin" type="measure"/>
+                    <field name="total_sales" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_customer_profitability_graph_pie" model="ir.ui.view">
+            <field name="name">customer.profitability.report.graph.pie</field>
+            <field name="model">customer.profitability.report</field>
+            <field name="arch" type="xml">
+                <graph string="Ventas Totales por Cliente (Pastel)" type="pie" sample="1">
+                    <field name="partner_id" type="row"/>
+                    <field name="total_sales" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
         <record id="action_customer_profitability_report" model="ir.actions.act_window">
             <field name="name">Customer Profitability</field>
             <field name="res_model">customer.profitability.report</field>
-            <field name="view_mode">tree</field>
+            <field name="view_mode">tree,graph</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">No data available yet.</p>
             </field>
