@@ -2,10 +2,10 @@
 <odoo>
 
     <template id="report_customer_profitability_document">
-        <t t-foreach="docs" t-as="doc">
-            <t t-call="web.html_container">
-                <t t-call="web.external_layout">
-                    <div class="page">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page" style="page-break-after: always">
                             <h2>Reporte de Rentabilidad</h2>
                             <p><strong>Cliente:</strong> <t t-esc="doc.partner_id.name"/></p>
                             <p><strong>Ventas totales:</strong> <t t-esc="doc.total_sales"/></p>
@@ -49,5 +49,15 @@
         <field name="print_report_name">'Reporte_Rentabilidad_' + object.partner_id.name</field>
         <field name="paperformat_id" ref="customer_profitability.paperformat_customer_profitability"/>
     </record>
+
+    <record id="action_print_mass_profitability_report" model="ir.actions.server">
+        <field name="name">Imprimir reporte de rentabilidad</field>
+        <field name="model_id" ref="model_customer_profitability_report"/>
+        <field name="binding_model_id" ref="model_customer_profitability_report"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_print_profitability_report()</field>
+    </record>
+
 
 </odoo>
