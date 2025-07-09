@@ -13,11 +13,11 @@
                     <field name="total_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                     <field name="profit" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                     <field name="margin"/>
-                    <!-- <button name="action_open_price_vs_cost_chart"
+                    <button name="action_print_profitability_report"
                         type="object"
-                        icon="fa-bar-chart"
-                        string=""/>
-                         -->
+                        icon="fa-print"
+                        string="Imprimir"
+                        class="btn-primary"/>
                 </tree>
             </field>
         </record>

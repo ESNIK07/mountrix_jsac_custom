@@ -11,6 +11,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/customer_profitability_views.xml',
+        'reports/customer_profitability_report.xml',
     ],
     'installable': True,
     'application': True,

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
 from odoo.exceptions import UserError
+from urllib.parse import quote
+import json
 
 class CustomerProfitabilityReport(models.Model):
     _name = 'customer.profitability.report'
@@ -65,6 +67,36 @@ class CustomerProfitabilityReport(models.Model):
             'context': {'default_partner_id': self.partner_id.id},
         }
     
+    def action_print_profitability_report(self):
+        return self.env.ref('customer_profitability.customer_profitability_report_pdf').report_action(self)
+
+    def get_quickchart_url(self, record):
+        self.ensure_one()
+        chart_config = {
+            "type": "bar",
+            "data": {
+                "labels": ["Ventas", "Costo", "Ganancia"],
+                "datasets": [{
+                    "label": "Rentabilidad",
+                    "data": [record.total_sales, record.total_cost, record.profit],
+                }]
+            }
+        }
+        chart_url = f"https://quickchart.io/chart?c={quote(json.dumps(chart_config))}"
+        return chart_url
+    
+    def get_basic_summary(self):
+        self.ensure_one()
+        if self.margin >= 40:
+            return "El cliente presenta una rentabilidad excelente."
+        elif self.margin >= 20:
+            return "El cliente tiene una rentabilidad aceptable."
+        elif self.margin >= 0:
+            return "La rentabilidad del cliente es baja, pero positiva."
+        else:
+            return "⚠ El cliente tiene pérdidas. Es necesario revisar los costos."
+
+
 # class SaleOrderLine(models.Model):
 #     _inherit = 'sale.order.line'
 

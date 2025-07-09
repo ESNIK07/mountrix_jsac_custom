@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_customer_profitability_document">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                            <h2>Reporte de Rentabilidad</h2>
+                            <p><strong>Cliente:</strong> <t t-esc="doc.partner_id.name"/></p>
+                            <p><strong>Ventas totales:</strong> <t t-esc="doc.total_sales"/></p>
+                            <p><strong>Costo total:</strong> <t t-esc="doc.total_cost"/></p>
+                            <p><strong>Ganancia:</strong> <t t-esc="doc.profit"/></p>
+                            <p><strong>Margen:</strong> <t t-esc="doc.margin"/>%</p>
+
+                            <img t-att-src="doc.get_quickchart_url(doc)" width="500" height="300"/>
+                            <h3>Conclusión</h3>
+                            <p><t t-esc="doc.get_basic_summary()"/></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="paperformat_customer_profitability" model="report.paperformat">
+        <field name="name">Customer Profitability Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">15</field>
+        <field name="margin_right">15</field>
+        <field name="header_line" eval="False"/>
+        <field name="dpi">90</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="display_name">Customer Profitability Format</field>
+    </record>
+    
+    <record id="customer_profitability_report_pdf" model="ir.actions.report">
+        <field name="name">Customer Profitability Report</field>
+        <field name="model">customer.profitability.report</field>
+        <field name="binding_model_id" ref="model_customer_profitability_report"/>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">customer_profitability.report_customer_profitability_document</field>
+        <field name="report_file">customer_profitability.report_customer_profitability_document</field>
+        <field name="binding_view_types">form</field>
+        <field name="print_report_name">'Reporte_Rentabilidad_' + object.partner_id.name</field>
+        <field name="paperformat_id" ref="customer_profitability.paperformat_customer_profitability"/>
+    </record>
+
+</odoo>
