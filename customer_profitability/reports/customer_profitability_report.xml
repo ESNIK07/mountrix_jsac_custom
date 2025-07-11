@@ -8,9 +8,15 @@
                     <div class="page" style="page-break-after: always">
                             <h2>Reporte de Rentabilidad</h2>
                             <p><strong>Cliente:</strong> <t t-esc="doc.partner_id.name"/></p>
-                            <p><strong>Ventas totales:</strong> <t t-esc="doc.total_sales"/></p>
-                            <p><strong>Costo total:</strong> <t t-esc="doc.total_cost"/></p>
-                            <p><strong>Ganancia:</strong> <t t-esc="doc.profit"/></p>
+                            <p><strong>Ventas totales:</strong> 
+                                <span t-field="doc.total_sales" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                            </p>
+                            <p><strong>Costo total:</strong> 
+                                <span t-field="doc.total_cost" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                            </p>
+                            <p><strong>Ganancia:</strong> 
+                                <span t-field="doc.profit" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                            </p>
                             <p><strong>Margen:</strong> <t t-esc="doc.margin"/>%</p>
 
                             <img t-att-src="doc.get_quickchart_url(doc)" width="500" height="300"/>
